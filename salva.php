@@ -1,14 +1,21 @@
 <?php 
-include("conexao.php")
-$nome = $_POST['name'];
+
+include('conexao.php');
+
+$nome = $_POST['nome'];
 $endereco = $_POST['endereco'];
 $telefone = $_POST['telefone'];
 
-$sql = "INSERT INTO contatos (nome, endereco, telefone) VALUES ('$nome', '$endereco', '$telefone')";
-$resultado = mysqli_query($conexao, $sql);
-if (mysqli_query($conexao, $sql)) {
-    echo "Novo registro criado com sucesso";
-} else {
-    echo "Erro: " . $sql . "<br>" . mysqli_error($conexao);
+$sql = "INSERT INTO contatos(nome, endereco, telefone) VALUES ('$nome', '$endereco', '$telefone')";
+
+if (mysqli_query($conexao, $sql)){
+    echo "Contato salvo com sucesso!";
+    echo "<br><a href='index.php'>Voltar</a>";
+}else{ 
+    echo "Erro ao salvar:"  . mysqli_error($conexao);
+
+
 }
+
+
 ?>
